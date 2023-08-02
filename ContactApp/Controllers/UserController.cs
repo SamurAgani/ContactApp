@@ -31,6 +31,7 @@ namespace ContactApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UpdateUserVM userUpdate)
         {
+            //checking the email is in use or not if it is return error else update user and logout
             string userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             int userId = int.Parse(userIdClaim);
             var userCheck = _userService.GetByEmail(userUpdate.Email);
@@ -54,6 +55,7 @@ namespace ContactApp.Controllers
         [HttpPost]
         public IActionResult CreateUser(CreateUserVM createUserVM)
         {
+            //checking the email is in use or not if it is return error
             var user = _userService.GetByEmail(createUserVM.Email);
             if (user == null)
                 _userService.CreateUser(_mapper.Map<User>(createUserVM));

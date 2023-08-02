@@ -17,6 +17,7 @@ namespace ContactApp.Services
         }
         public void CreateContact(CreateContactVM Contact)
         {
+            //add photos by adding guid in the photo path
             if (Contact.PhotoUrlFile != null)
             {
                 string photoGuid = Guid.NewGuid().ToString();
@@ -58,6 +59,7 @@ namespace ContactApp.Services
 
         public void UpdateContact(UpdateContactVM Contact)
         {
+            //add photos by adding guid in the photo path
             if (Contact.PhotoUrlFile != null)
             {
                 string photoGuid = Guid.NewGuid().ToString();

@@ -19,6 +19,7 @@ namespace ContactApp.Controllers
         }
         public IActionResult Index(string searchText = "")
         {
+            // if searchText is null or whitespace get all contact by user else get by searchText
             List<Entities.Contact> contacts;
             if (string.IsNullOrEmpty(searchText))
             {

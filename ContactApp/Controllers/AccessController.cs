@@ -31,6 +31,7 @@ namespace ContactApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM VMLogin)
         {
+            // check the user is exist or not if it is not return error
             if (ModelState.IsValid)
             {
                 var user = _userService.CheckUser(VMLogin);

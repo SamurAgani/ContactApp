@@ -40,22 +40,23 @@ namespace ContactApp.Repositories
 
         public IEnumerable<Contact> GetContactsByUserIdAndText(int userId, string searchText)
         {
+            //get contacts by dapper and query
             var CS = _configuration.GetConnectionString("ContactDB");
             using (var connection = new SqlConnection(CS))
             {
                 connection.Open();
 
-                // Query using Dapper with parameters
+                // query using Dapper with parameters
                 string query = @"
                 SELECT *
                 FROM Contacts
                 WHERE UserId = @UserId
                 AND (Name + Surname + Number) LIKE @SearchText";
 
-                // Append '%' to the searchText to perform a partial match
+                // append '%' to the searchText to perform a partial match
                 searchText = "%" + searchText + "%";
 
-                // Execute the query with parameters
+                // execute the query with parameters
                 var contacts = connection.Query<Contact>(query, new { UserId = userId, SearchText = searchText });
 
                 return contacts;

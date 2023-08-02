@@ -26,6 +26,7 @@ namespace ContactApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateContactVM createContactVM)
         {
+            // adding userId to the VM and Create
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             createContactVM.UserId = int.Parse(userId);
             _contactService.CreateContact(createContactVM);
@@ -42,6 +43,7 @@ namespace ContactApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdateContactVM createContactVM)
         {
+            // adding userId to the VM and Update
             var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
             createContactVM.UserId = int.Parse(userId);
             _contactService.UpdateContact(createContactVM);
