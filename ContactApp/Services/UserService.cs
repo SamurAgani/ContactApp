@@ -48,6 +48,7 @@ namespace ContactApp.Services
         public void UpdateUser(User user)
         {
             _repositoryManager.Users.Update(user);
+            _repositoryManager.Save();
         }
     }
 }

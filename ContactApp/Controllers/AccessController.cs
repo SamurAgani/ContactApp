@@ -60,17 +60,7 @@ namespace ContactApp.Controllers
             ViewData["ValidateMessage"] = "Please fill the all required fields!";
             return View();
         }
-        public IActionResult CreateUser()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateUser(CreateUserVM createUserVM)
-        {
-            _userService.CreateUser(_mapper.Map<User>(createUserVM));
-            return RedirectToAction("Login");
-        }
+       
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

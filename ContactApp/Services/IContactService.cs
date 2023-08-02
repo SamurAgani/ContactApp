@@ -1,4 +1,5 @@
 ﻿using ContactApp.Entities;
+using ContactApp.ViewModels;
 
 namespace ContactApp.Services
 {
@@ -7,8 +8,9 @@ namespace ContactApp.Services
         IEnumerable<Contact> GetAllContacts();
         Contact GetById(int id);
         IEnumerable<Contact> GetByUserId(int UserId);
-        void CreateContact(Contact Contact);
-        void UpdateContact(Contact Contact);
+        IEnumerable<Contact> GetByUserIdAndText(int UserId, string text);
+        void CreateContact(CreateContactVM Contact);
+        void UpdateContact(UpdateContactVM Contact);
         void DeleteContact(Contact Contact);
     }
 }

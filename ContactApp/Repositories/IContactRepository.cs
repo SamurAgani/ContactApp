@@ -9,5 +9,6 @@ namespace ContactApp.Repositories
         void CreateContact(Contact Contact);
         void UpdateContact(Contact Contact);
         void DeleteContact(Contact Contact);
+        IEnumerable<Contact> GetContactsByUserIdAndText(int userId, string text);
     }
 }

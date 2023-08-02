@@ -9,6 +9,9 @@ namespace ContactApp
         public AutoMapperProfile()
         {
             CreateMap<CreateUserVM, User>().ReverseMap();
+            CreateMap<UpdateUserVM, User>().ReverseMap();
+            CreateMap<CreateContactVM, Contact>().ReverseMap();
+            CreateMap<UpdateContactVM, Contact>().ReverseMap();
         }
     }
 }
