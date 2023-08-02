@@ -1,0 +1,50 @@
+﻿@using ContactApp.ViewModels
+@model CreateUserVM;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 100px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="card">
+                <div class="card-body">
+
+                    <h1 class="card-title">Login</h1>
+                    <form asp-controller="Access" asp-action="CreateUser" method="post">
+                        <div class="mb-3">
+
+                            <input class="form-group" type="email" placeholder="Email" asp-for="Email" />
+                        </div>
+                        <div class="mb-3">
+
+                            <input class="form-group" type="password" placeholder="Pass" asp-for="Password" />
+                        </div>
+                        @if (ViewData["ValidateMessage"] != null)
+                        {
+                            <br />
+                            <br />
+                            <label style="color:red">@ViewData["ValidateMessage"]</label>
+                        }
+                        <button style="margin-top:10px" url="/Access/CreateUser" type="submit" class="btn btn-primary">Create account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
